@@ -1,0 +1,22 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+
+<div class="d-flex flex-wrap">
+<% @posts.each do |post| %>
+    <div class="card m-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"><%= post.content %></p>
+      <%= link_to 'Edit', edit_post_path(@post, :id => post.id), class: 'nav-link border-0 bg-transparent' %>
+
+        <%= button_to 'Delete', post_path(post.id), method: :delete, class: ' border-0 bg-transparent' %>
+
+    </div>
+  </div>
+
+<% end %>
+</div>
